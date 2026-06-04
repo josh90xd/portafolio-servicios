@@ -2,6 +2,7 @@ const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-button");
 const navLinks = document.querySelectorAll(".site-nav a");
 const revealItems = document.querySelectorAll("[data-reveal]");
+const benefitButtons = document.querySelectorAll(".benefit-toggle");
 
 menuButton?.addEventListener("click", () => {
   const isOpen = header.classList.toggle("is-open");
@@ -12,6 +13,14 @@ navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     header.classList.remove("is-open");
     menuButton?.setAttribute("aria-expanded", "false");
+  });
+});
+
+benefitButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".benefit-item");
+    const isOpen = item.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", String(isOpen));
   });
 });
 
